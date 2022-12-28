@@ -2,7 +2,7 @@
 import java.sql.*;
 import java.io.*;
 
-class UpdateJdbcApp{
+class SelectJdbcApp{
 	public static void main(String args[]){
 		try{ //checked exception
 			
@@ -12,7 +12,7 @@ class UpdateJdbcApp{
 			/* 2. create connection */
 			String url = "jdbc:mysql://localhost:3306/youtube";
 			String username = "root";
-			String password = "";
+			String password = "abccbaabc1";
 			Connection con = DriverManager.getConnection(url,username,password);
 			
 			if(con.isClosed()){
@@ -23,30 +23,21 @@ class UpdateJdbcApp{
 			}
 			
 			/* 3. Create Query */
-			String q = "update table1 set tName=?, tCity=? where tId=?";
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			
-			System.out.println("Enter new name: ");
-			String name = br.readLine();
-			
-			System.out.println("Enter new city name:");
-			String city = br.readLine();
-			
-			System.out.println("Enter the student id:");
-			int id = Integer.parseInt(br.readLine());
-			
+			String q = "select * from table1";
 			
 			/* 4. Create a statement*/
-			PreparedStatement stmt = con.prepareStatement(q);
+			Statement stmt = con.createStatement();
+			ResultSet set = stmt.executeQuery(q);
 			
-			stmt.setString(1,name);
-			stmt.setString(2,city);
-			stmt.setInt(3,id);
+			while(set.next())
+			{
+				int id = set.getInt(1);
+				String name = set.getString(2);
+				String city = set.getString(3);
+				System.out.println("Name:"+ name + " City: "+ city);
+			}
 			
-			stmt.executeUpdate();
-			System.out.println("Updated the table in Database..");
-			
+			System.out.println("Fetched the table from Database..");
 			con.close();
 			
 		}catch(Exception e)

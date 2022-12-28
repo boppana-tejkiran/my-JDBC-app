@@ -29,6 +29,7 @@ class JdbcApp{
 			
 			stmt.executeUpdate(q);
 			System.out.println("Table created in Database..");
+			con.close();
 			
 		}catch(Exception e)
 		{
