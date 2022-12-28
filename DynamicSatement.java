@@ -1,5 +1,6 @@
 //import all classes from sql package
 import java.sql.*;
+import java.io.*;
 
 class DynamicSatement{
 	public static void main(String args[]){
@@ -28,8 +29,15 @@ class DynamicSatement{
 			PreparedStatement pstmt = con.prepareStatement(q);
 			
 			/* 5. Set values to Query */
-			pstmt.setString(1, "Bike"); //setting 1st column in table
-			pstmt.setString(2, "Honda"); //setting 2nd column in table
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Enter Name: ");
+			String name  = br.readLine();
+			
+			System.out.println("Enter city: ");
+			String city = br.readLine();
+			
+			pstmt.setString(1, name); //setting 1st column in table
+			pstmt.setString(2, city); //setting 2nd column in table
 			
 			pstmt.executeUpdate();
 	
