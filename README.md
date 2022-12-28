@@ -1,5 +1,5 @@
 # my-JDBC-app
-JDBC Application for practicing JDBC usage.
+In this project, I have created different JDBC Applications for practicing JDBC usage.
 
 - JDBC is an API used to connect Java Applications with variety of Databases.
 - JDBC offers same set of APIs to perform CRUD operations with any database.
@@ -9,7 +9,7 @@ JDBC Application for practicing JDBC usage.
 Software used for this Project:
 - Database: MySQL 8.0.31
 - Java 19
-- MySQL Driver
+- MySQL Driver (Added to $CLASSPATH)
 
 Steps to Connect Java application with Database:
 
@@ -29,7 +29,7 @@ We use Connection interface for creating connections.
 	Connection con = DriverMAnager.getConnection("url <jdbc:mysql://ip-address:port-no/dbname>","username<root>","password");
 ```
 
-3) Create a SQL Query: [Statement. PreparedStatement, CallableSattement]
+3) Create a SQL Query: [Statement, PreparedStatement, CallableStatement]
 ```
 Ex:
 	String q = "select * from students";
